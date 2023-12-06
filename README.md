@@ -1,5 +1,7 @@
 # Breakout.js
 
+![Game](/Documents/game01.png)
+
 This is a sample of object-oriented programming rewritten from "[2D breakout game using pure JavaScript - Game development | MDN (mozilla.org)](https://developer.mozilla.org/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)".
 
 The js files starting with oo are rewritten in object-oriented programming. The other js files are the originals.
