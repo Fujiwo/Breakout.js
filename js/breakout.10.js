@@ -1,3 +1,5 @@
+// 10. Finishing up (仕上げ)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;

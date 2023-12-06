@@ -1,3 +1,5 @@
+// 2. Move the ball (ボールを動かす)
+
 class Vector2 {
     constructor(x, y) {
         this.x = x

@@ -1,3 +1,5 @@
+// 1. Create the Canvas and draw on it (キャンバスを作ってその上に描画する)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 

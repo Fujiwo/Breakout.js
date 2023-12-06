@@ -1,3 +1,5 @@
+// 1. Create the Canvas and draw on it (キャンバスを作ってその上に描画する)
+
 class Canvas {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId)

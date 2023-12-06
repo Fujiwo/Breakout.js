@@ -1,3 +1,5 @@
+// 3. Bounce off the walls (ボールを壁で反射させる)
+
 class Vector2 {
     constructor(x, y) {
         this.x = x

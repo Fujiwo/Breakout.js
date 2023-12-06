@@ -1,3 +1,5 @@
+// 7. Collision detection (衝突検出)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

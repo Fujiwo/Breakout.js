@@ -1,3 +1,5 @@
+// 5. Game over (ゲームオーバー)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

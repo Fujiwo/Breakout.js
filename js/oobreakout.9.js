@@ -1,3 +1,5 @@
+// 9. Mouse controls (マウス操作)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

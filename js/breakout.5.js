@@ -1,3 +1,5 @@
+// 5. Game over (ゲームオーバー)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;

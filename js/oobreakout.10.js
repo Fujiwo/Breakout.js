@@ -1,3 +1,5 @@
+// 10. Finishing up (仕上げ)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

@@ -1,3 +1,5 @@
+// 4. Paddle and keyboard controls (パドルとキーボード操作)
+
 class Vector2 {
     constructor(x, y) {
         this.x = x

@@ -1,3 +1,5 @@
+// 7. Collision detection (衝突検出)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;

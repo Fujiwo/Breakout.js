@@ -1,3 +1,5 @@
+// 6. Build the brick field (ブロックのかたまりを作る)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

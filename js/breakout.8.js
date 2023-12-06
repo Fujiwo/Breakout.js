@@ -1,3 +1,5 @@
+// 8. Track the score and win (スコアと勝ち負けを記録する)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;

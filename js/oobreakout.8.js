@@ -1,3 +1,5 @@
+// 8. Track the score and win (スコアと勝ち負けを記録する)
+
 class Utility {
     static isBetween(value, minimum, maximum) {
         return minimum <= value && value <= maximum

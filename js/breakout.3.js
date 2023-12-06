@@ -1,3 +1,5 @@
+// 3. Bounce off the walls (ボールを壁で反射させる)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;

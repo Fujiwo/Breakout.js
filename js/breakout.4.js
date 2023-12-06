@@ -1,3 +1,5 @@
+// 4. Paddle and keyboard controls (パドルとキーボード操作)
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var ballRadius = 10;
