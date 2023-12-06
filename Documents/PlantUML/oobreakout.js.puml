@@ -1,0 +1,75 @@
+@startuml
+
+class Program {
+    main() : void
+}
+class Game {
+    lives : number = 3
+    score : number = 0
+    run() : void
+    draw() : void
+}
+class Ball {
+    position: Vector2
+    velocity: Vector2
+    color: string
+    detectCollision(canvas: Canvas, paddle: Paddle, brickSet: BrickSet) : boolean
+    draw(canvas: Canvas) : void
+}
+class BrickSet {
+    detectCollision(position: Vector2) : boolean
+    draw(canvas: Canvas) : void
+}
+class Brick {
+    position: Vector2
+    status: boolean
+}
+class Paddle {
+    position: number
+    size: Vector2
+    draw(canvas: Canvas) : void
+}
+class Canvas {
+    onDraw: (canvas: Canvas) => void
+
+    fillCircle(circle: Circle, color: string) : void
+    fillRectangle(rectangle: Rectangle, color: string) : void
+    fillText(position: Vector2, text: string, color: string, font: string)
+}
+class Rectangle {
+    position: Vector2
+    size: Vector2
+}
+class Circle {
+    position: Vector2
+    radius: number
+}
+class Vector2 {
+    x: number
+    y: number
+}
+class Utility <<static>> {
+    {static} isBetween()
+    {static} some2D()
+    {static} filter2D()
+}
+Program -> Game
+Canvas -> Rectangle
+Canvas -> Circle
+Circle o-> Vector2
+Rectangle o-> Vector2
+Paddle o-> Vector2
+Paddle -> Canvas
+BrickSet o-> Brick
+BrickSet -> Canvas
+Ball o-> Vector2
+Ball -> Canvas
+Ball -> BrickSet
+Ball -> Paddle
+Game -> Vector2
+Game -> Canvas
+Game -> BrickSet
+Game -> Paddle
+Game -> Ball
+
+@enduml

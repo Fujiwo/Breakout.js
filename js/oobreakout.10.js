@@ -217,13 +217,13 @@ class Ball {
         this.color            = color
     }
 
-    detectCollision(canvas, paddle, bricks) {
+    detectCollision(canvas, paddle, brickSet) {
         if (!Utility.isBetween(this.position.x + this.velocity.x, this.radius, canvas.size.x - this.radius))
             this.velocity.x = -this.velocity.x
 
         if (this.position.y + this.velocity.y < this.radius) {
             this.velocity.y = -this.velocity.y
-        } else if (bricks.detectCollision(this.position)) {
+        } else if (brickSet.detectCollision(this.position)) {
             this.velocity.y = -this.velocity.y
             return gameStatus.scored
         } else if (this.position.y + this.velocity.y > canvas.size.y - this.radius) {
@@ -264,10 +264,10 @@ class Game {
     run() {
         this.createCanvas()
 
-        const color = "#0095DD"
+        const color   = "#0095DD"
         this.createBall  (color)
         this.createPaddle(color)
-        this.bricks = new BrickSet(this.canvas)
+        this.brickSet = new BrickSet(this.canvas)
     }
 
     pressRight(on) {
@@ -301,7 +301,7 @@ class Game {
     }
 
     draw(canvas) {
-        switch (this.ball.detectCollision(canvas, this.paddle, this.bricks).value) {
+        switch (this.ball.detectCollision(canvas, this.paddle, this.brickSet).value) {
             case gameStatus.scored.value:
                 this.countUpScore()
                 break
@@ -316,7 +316,7 @@ class Game {
 
     countUpScore() {
         this.score++
-        if (this.score == this.bricks.brickCount)
+        if (this.score == this.brickSet.brickCount)
             this.gameWin()
     }
     
@@ -329,11 +329,11 @@ class Game {
     }
 
     drawAll(canvas) {
-        this.ball  .draw(canvas)
-        this.paddle.draw(canvas)
-        this.bricks.draw(canvas)
-        this.drawScore  (canvas)
-        this.drawLives  (canvas)
+        this.ball    .draw(canvas)
+        this.paddle  .draw(canvas)
+        this.brickSet.draw(canvas)
+        this.drawScore    (canvas)
+        this.drawLives    (canvas)
     }
 
     drawScore(canvas) {
