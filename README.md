@@ -18,3 +18,12 @@ Each source code number is a chapter number.
 8. Track the score and win (スコアと勝ち負けを記録する)
 9. Mouse controls (マウス操作)
 10. Finishing up (仕上げ)
+
+## Design
+
+### Class Diagram
+
+Class Diagram by [PlantUml](https://plantuml.com)
+
+![Class Diagram](/Documents/PlantUML/oobreakout.js.puml.png)
+

@@ -54,19 +54,19 @@ class Utility <<static>> {
     {static} filter2D()
 }
 Program -> Game
-Canvas -> Rectangle
-Canvas -> Circle
+' Canvas -> Rectangle
+' Canvas -> Circle
 Circle o-> Vector2
 Rectangle o-> Vector2
-Paddle o-> Vector2
-Paddle -> Canvas
+' Paddle o-> Vector2
+Paddle --> Canvas
 BrickSet o-> Brick
-BrickSet -> Canvas
-Ball o-> Vector2
-Ball -> Canvas
+BrickSet --> Canvas
+' Ball o-> Vector2
+Ball --> Canvas
 Ball -> BrickSet
 Ball -> Paddle
-Game -> Vector2
+' Game -> Vector2
 Game -> Canvas
 Game -> BrickSet
 Game -> Paddle
