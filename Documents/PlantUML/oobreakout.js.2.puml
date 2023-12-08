@@ -1,0 +1,173 @@
+@startuml
+
+title Ball Game
+
+' Classes
+
+class Utility {
+  + static isBetween(value: number, minimum: number, maximum: number): boolean
+  + static some2D(array2D: any[][], exists: (item: any) => boolean): boolean
+  + static filter2D(array2D: any[][], selector: (item: any) => boolean): any[]
+}
+
+class Vector2 {
+  - x: number
+  - y: number
+
+  + Vector2(x: number, y: number)
+  + plus(vector: Vector2): Vector2
+  + plusEqual(vector: Vector2): void
+  + clone(): Vector2
+}
+
+class Circle {
+  - position: Vector2
+  - radius: number
+
+  + Circle(position: Vector2, radius: number)
+}
+
+class Rectangle {
+  - position: Vector2
+  - size: Vector2
+
+  + rightBottom(): Vector2
+  + Rectangle(position: Vector2, size: Vector2)
+  + isOn(position: Vector2): boolean
+}
+
+class Canvas {
+  - canvas: HTMLCanvasElement
+  - context: CanvasRenderingContext2D
+  - onDraw: (canvas: Canvas) => void
+
+  + Canvas(canvasId: string)
+  + stop(): void
+  + fillCircle(circle: Circle, color: string): void
+  + fillRectangle(rectangle: Rectangle, color: string): void
+  + fillText(position: Vector2, text: string, color: string, font: string): void
+  + draw(): void
+  + clear(): void
+  + size: Vector2
+  + offset: Vector2
+}
+
+class Paddle {
+  - originalPosition: Vector2
+  - position: Vector2
+  - size: Vector2
+  - color: string
+  - rightPressed: boolean
+  - leftPressed: boolean
+
+  + Paddle(position: Vector2, size: Vector2, color: string)
+  + draw(canvas: Canvas): void
+  + isOn(position: Vector2): boolean
+  + reset(): void
+  + moveStep(canvas: Canvas): void
+}
+
+class Brick {
+  - position: Vector2
+  - status: boolean
+
+  + Brick(position: Vector2, status: boolean)
+}
+
+class BrickSet {
+  - bricks: Brick[][]
+  - rowCount: number
+  - columnCount: number
+  - padding: number
+  - brickSize: Vector2
+  - brickOffset: Vector2
+
+  + BrickSet(canvas: Canvas)
+  + detectCollision(ballPosition: Vector2): gameStatus
+  + draw(canvas: Canvas): void
+  + initializeBricks(): void
+  + getBrickPosition(position: Vector2): Vector2
+  + brickCount: number
+}
+
+enum gameStatus {
+  normal { value: 0 }
+  scored { value: 1 }
+  over { value: -1 }
+}
+
+class Ball {
+  - originalPosition: Vector2
+  - position: Vector2
+  - velocity: Vector2
+  - radius: number
+  - color: string
+
+  + Ball(position: Vector2, velocity: Vector2, color: string)
+  + detectCollision(canvas: Canvas, paddle: Paddle, brickSet: BrickSet): gameStatus
+  + reset(): void
+  + draw(canvas: Canvas): void
+  + moveStep(): void
+}
+
+class Game {
+  - canvas: Canvas
+  - paddle: Paddle
+  - ball: Ball
+  - brickSet: BrickSet
+  - score: number
+  - lives: number
+
+  + Game()
+  + run(): void
+  + pressRight(on: boolean): void
+  + pressLeft(on: boolean): void
+  + createCanvas(): void
+  + createBall(color: string): void
+  + createPaddle(color: string): void
+  + reset(): void
+  + draw(canvas: Canvas): void
+  + countUpScore(): void
+  + countDownLives(): void
+  + drawAll(canvas: Canvas): void
+  + drawScore(canvas: Canvas): void
+  + drawLives(canvas: Canvas): void
+  + gameOver(): void
+  + gameWin(): void
+  + showMessage(message: string): void
+  + scoreText: string
+}
+
+class Program {
+  - game: Game
+
+  + main(): void
+
+  + initilizeHandlers(): void
+  + onKeyDown(e: KeyboardEvent): void
+  + onKeyUp(e: KeyboardEvent): void
+}
+
+' Dependency
+
+Program -> Game
+' Canvas -> Rectangle
+' Canvas -> Circle
+Circle o-> Vector2
+Rectangle o-> Vector2
+' Paddle o-> Vector2
+Paddle --> Canvas
+BrickSet o-> Brick
+BrickSet --> Canvas
+' Ball o-> Vector2
+Ball --> Canvas
+Ball -> BrickSet
+Ball -> Paddle
+' Game -> Vector2
+Game -> Canvas
+Game -> BrickSet
+Game -> Paddle
+Game -> Ball
+
+@enduml
+
